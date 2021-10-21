@@ -11,8 +11,9 @@ from random import *
 import linecache
 
 from prettytable import PrettyTable
+import process
 
-with open("config.json") as f_in:
+with open("config/config.json") as f_in:
     _CONFIG = json.load(f_in)
 
 def random_name():
@@ -30,9 +31,10 @@ def call_init_demo():
     print("for a real hard reset, do on the cli- ")
     print("cd marbles-api && ./resetServer.sh")
     print()
-    url = 'http://localhost:5000/init_demo'
-    r = requests.get(url)
-    print(r)
+    # url = 'http://localhost:5000/init_demo'
+    # r = requests.get(url)
+    # print(r)
+    process.init_demo()
 
 def call_show_data():
     url = 'http://localhost:5000/show_data'

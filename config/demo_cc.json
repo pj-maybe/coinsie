@@ -1,0 +1,23 @@
+[
+	{
+		"command": "create-owner",
+		"type": "POST",
+		"body": {
+			"username" : "butcher",
+			"wordpressID": "",
+			"userwcid": "",
+			"company": "United Caps",
+			"password":"",
+			"usertype": "merchant",
+			"colorLineAmount": [{
+				"color":"blue",
+				"lineAmount":200
+			}],
+			"shapeLineAmount":[{
+				"shape":"local coin",
+				"lineAmount":200
+			}],
+			"towns": "Friendly Town"
+		}
+	}
+]

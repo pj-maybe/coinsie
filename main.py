@@ -34,31 +34,34 @@ def call_init_demo():
     # url = 'http://localhost:5000/init_demo'
     # r = requests.get(url)
     # print(r)
-    process.init_demo()
+    process.init_system()
+    process.load_demo()
 
-def call_show_data():
-    url = 'http://localhost:5000/show_data'
-    r = requests.get(url)
-    r_text = r.text
-    r_json = json.loads(r_text)
-    print(json.dumps(r_json, indent=4, sort_keys=True))
+def call_show_data():    
+    full_nw = process.show_full_network()
+    print(json.dumps(full_nw, indent=4, sort_keys=True))
 
-def call_get_holdings():
-    url = 'http://localhost:5000/get_holdings'
-    r = requests.get(url)
-    r_text = r.text
-    r_json = json.loads(r_text)
-    #print(r_json)
+def call_get_holdings():    
+    r_json = process.get_owner_holdings()
 
-    user_table = PrettyTable()
-    user_table.field_names = ["username", "LC", "CC"]
+    owner_table = PrettyTable()
+    owner_table.field_names = ["username", "usertype", "LC", "CC"]
 
     for o in r_json:
-        if o["userType"] == 'user':
-            user_table.add_row([o["username"], sum([x['size'] for x in o["coins"] if x["shape"] == "local coin"]), sum([x['size'] for x in o["coins"] if x["shape"] == "community coin"])])
+        if o["userType"] == 'Merchant':
+            owner_table.add_row([o["username"], o["userType"], sum([x['size'] for x in o["coins"] if x["shape"] == "local coin"]), sum([x['size'] for x in o["coins"] if x["shape"] == "community coin"])])
+    
+    for o in r_json:
+        if o["userType"] == 'User':
+            owner_table.add_row([o["username"], o["userType"], sum([x['size'] for x in o["coins"] if x["shape"] == "local coin"]), sum([x['size'] for x in o["coins"] if x["shape"] == "community coin"])])
+
+    for o in r_json:
+        if o["userType"] == 'Comm Group':
+            owner_table.add_row([o["username"], o["userType"], sum([x['size'] for x in o["coins"] if x["shape"] == "local coin"]), sum([x['size'] for x in o["coins"] if x["shape"] == "community coin"])])
+
 
     print()
-    print(user_table)
+    print(owner_table)
 
 def call_get_user_holdings():
     username = input("Enter Username (cancel): ")

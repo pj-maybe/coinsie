@@ -1,0 +1,8 @@
+ix,username,OfferType,StarsNeeded,Direction,Size,ShortText
+0,Butcher,LocalCoinsOffer,0,Give,10,$10 of meat & chicken
+1,Baker,LocalCoinsOffer,0,Give,10,$7 of bread & buns
+2,Cafe,LocalCoinsOffer,0,Give,10,$12 of coffee & breakfast
+3,Butcher,LocalCoinsReward,0,Get,15,Spend $50 on sausages
+4,Baker,LocalCoinsReward,0,Get,10,Spend $50 on pastries
+5,Cafe,LocalCoinsReward,0,Get,5,Spend $50 on brunch
+6,IGA Supermarket, LocalCoinsReward,0,Get,20,Spend $100 on groceries
